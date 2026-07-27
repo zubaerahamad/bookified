@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import '@clerk/ui/themes/shadcn.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -123,6 +124,12 @@
 
   /* Layout dimensions */
   --navbar-height: 74px;
+
+  /* Hero Section Colors */
+  --hero-bg: #f3e4c7;
+  --hero-text-primary: #212a3b;
+  --hero-text-secondary: #3d485e;
+  --hero-card-bg: rgba(255, 255, 255, 0.8);
 }
 
 .dark {
@@ -218,6 +225,62 @@
   .loading-wrapper {
     @apply fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm;
   }
+
+  /* Hero Section Components */
+  .hero-container {
+    @apply bg-[var(--hero-bg)] rounded-[32px] p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 relative overflow-hidden shadow-2xl shadow-[#212a3b]/5 mx-auto;
+  }
+
+  .hero-container::before {
+    content: '';
+    @apply absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none;
+  }
+
+  .hero-container::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-48 h-48 bg-[#212a3b]/5 rounded-full -ml-24 -mb-24 blur-2xl pointer-events-none;
+  }
+
+  .hero-content {
+    @apply flex-1 space-y-6 z-10 text-center lg:text-left w-full order-1 lg:order-none;
+  }
+
+  .hero-title {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-bold text-[var(--hero-text-primary)] leading-[1.1];
+  }
+
+  .hero-description {
+    @apply text-base md:text-lg text-[var(--hero-text-secondary)] max-w-md mx-auto lg:mx-0;
+  }
+
+  .hero-button {
+    @apply bg-white hover:bg-white/90 text-[var(--hero-text-primary)] font-bold px-8 py-6 rounded-xl shadow-sm transition-all cursor-pointer flex items-center gap-2 text-base;
+  }
+
+  .hero-illustration-wrapper {
+    @apply flex-1 flex justify-center items-center z-10 w-full max-w-md lg:max-w-xl order-2 lg:order-none;
+  }
+
+  .hero-steps-card {
+    @apply bg-[var(--hero-card-bg)] backdrop-blur-md rounded-2xl p-6 sm:p-8 space-y-6 w-full lg:w-[280px] shrink-0 z-10 shadow-xl shadow-black/5 order-3 lg:order-none;
+  }
+
+  .hero-step-item {
+    @apply flex items-center gap-5;
+  }
+
+  .hero-step-number {
+    @apply flex items-center justify-center w-8 h-8 rounded-full border-2 border-[var(--hero-text-primary)] text-[var(--hero-text-primary)] font-bold shrink-0 text-sm;
+  }
+
+  .hero-step-title {
+    @apply font-bold text-[var(--hero-text-primary)] text-lg;
+  }
+
+  .hero-step-desc {
+    @apply text-[var(--hero-text-secondary)] text-sm opacity-80;
+  }
+
   .loading-shadow-wrapper {
     @apply rounded-xl p-10 w-fit md:min-w-md;
   }
